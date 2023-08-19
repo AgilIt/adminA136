@@ -1,0 +1,26 @@
+backend/
+│
+├── config/
+│   ├── db.config.js           # Configuration de la base de données à partir de .env
+│   └── auth.config.js         # Configuration de la clé de chiffrement pour les mots de passe
+│
+├── controllers/
+│   ├── user.controller.js     # Contrôleur pour les opérations liées aux utilisateurs
+│   ├── article.controller.js  # Contrôleur pour les opérations liées aux articles
+│   └── auth.controller.js     # Contrôleur pour les opérations d'authentification
+│
+├── middleware/
+│   └── auth.middleware.js     # Middleware pour vérifier les tokens JWT
+│
+├── models/
+│   ├── user.models.js          # Modèle de données pour la table "user"
+│   └── article.models.js       # Modèle de données pour la table "article"
+│
+├── routes/
+│   ├── user.routes.js         # Définition des routes liées aux utilisateurs
+│   ├── article.routes.js      # Définition des routes liées aux articles
+│   └── auth.routes.js         # Définition des routes d'authentification
+│
+├── .env                       # Fichier de configuration des variables d'environnement
+├── server.js                  # Point d'entrée du serveur Node.js
+└── package.json               # Configuration et dépendances du projet Node.js
