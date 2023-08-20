@@ -21,7 +21,12 @@ module.exports = (sequelize, Sequelize) => {
       allowNull: false,
       defaultValue: true
     }
-  });
+  }, 
+  {
+  timestamps: false, // Exclut les colonnes createdAt et updatedAt
+  tableName: 'article', // Définit le nom de la table
+  }
+  );
 
   return Article;
 };

@@ -4,7 +4,7 @@ const { secret } = require('../config/auth.config');
 // Middleware pour vérifier les tokens JWT
 exports.verifyToken = (req, res, next) => {
   const token = req.headers['x-access-token'];
-
+console.log('mon token =>', token);
   if (!token) {
     return res.status(403).send({ message: 'Aucun token fourni.' });
   }

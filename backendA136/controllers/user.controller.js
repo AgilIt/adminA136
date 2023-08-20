@@ -7,7 +7,7 @@ const { secret } = require('../config/auth.config');
 // Créer et enregistrer un nouvel utilisateur
 exports.signup = (req, res) => {
   const { username, login, password } = req.body;
-
+console.log(username, login, password)
   // Vérification des champs obligatoires
   if (!username || !login || !password) {
     return res.status(400).send({ message: 'Tous les champs sont obligatoires.' });
@@ -22,7 +22,7 @@ exports.signup = (req, res) => {
     login: login,
     password: hashedPassword
   });
-
+console.log(user)
   // Enregistrement de l'utilisateur dans la base de données
   user.save((err, user) => {
     if (err) {
@@ -35,6 +35,7 @@ exports.signup = (req, res) => {
 // Connecter un utilisateur
 exports.login = (req, res) => {
   const { login, password } = req.body;
+  console.log(login,password)
 
   // Recherche de l'utilisateur par le champ "login"
   User.findOne({ where: { login: login } }).then(user => {

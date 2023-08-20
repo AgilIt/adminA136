@@ -4,12 +4,12 @@ const Article = db.article;
 // Créer un nouvel article
 exports.createArticle = (req, res) => {
   const { iduser, titre, contenu, image } = req.body;
-
+console.log(1);
   // Vérification des champs obligatoires
   if (!iduser || !titre || !contenu) {
     return res.status(400).send({ message: 'Tous les champs sont obligatoires.' });
   }
-
+console.log(2);
   // Création de l'article
   const article = new Article({
     iduser: iduser,
@@ -17,12 +17,13 @@ exports.createArticle = (req, res) => {
     contenu: contenu,
     image: image
   });
-
+console.log(3);
   // Enregistrement de l'article dans la base de données
   article.save((err, article) => {
     if (err) {
       return res.status(500).send({ message: err });
     }
+    console.log(4);
     res.send({ message: 'Article créé avec succès.' });
   });
 };
@@ -31,6 +32,7 @@ exports.createArticle = (req, res) => {
 exports.getAllArticles = (req, res) => {
   Article.findAll()
     .then(articles => {
+      console.log(articles);
       res.send(articles);
     })
     .catch(err => {

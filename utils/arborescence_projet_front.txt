@@ -1,0 +1,19 @@
+frontend/
+│
+├── index.html
+├── login.html
+├── signup.html
+├── home.html
+├── create-article.html
+├── css/
+|     |-- styles.css
+├── js/
+│   ├── api.js
+│   ├── auth.js
+│   ├── login.js
+│   ├── signup.js
+│   ├── home.js
+│   ├── create-article.js
+│   └── main.js
+│
+└── images/

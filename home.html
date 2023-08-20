@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Accueil</title>
+</head>
+<body>
+  <h1>Bienvenue sur la page d'accueil</h1>
+  
+  <h2>Créer un nouvel article</h2>
+  <form id="create-article-form">
+    <label for="title">Titre de l'article:</label>
+    <input type="text" id="title" name="title" required><br><br>
+    
+    <label for="content">Contenu de l'article:</label>
+    <textarea id="content" name="content" required></textarea><br><br>
+    
+    <button type="submit">Créer l'article</button>
+  </form>
+  
+  <section id="articles-container"></section>
+  <p><a href="#" id="logout">Se déconnecter</a></p>
+  
+  <script type="module" src="js/home.js"></script>
+  <script type="module" src="js/create-article.js"></script>
+</body>
+</html>

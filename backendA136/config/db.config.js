@@ -6,7 +6,7 @@ module.exports = {
   PASSWORD: process.env.DB_PASSWORD,
   DB: process.env.DB_NAME,
   dialect: 'mysql',
-  port: 8889, // Utiliser "port" en minuscules
+  port: process.env.DB_PORT, // Utiliser "port" en minuscules
   pool: {
     max: 5,
     min: 0,
