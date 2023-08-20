@@ -1,0 +1,20 @@
+#articles-container{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between; /* Pour espacer uniformément les articles */
+    max-width: 1200px; /* Ajustez la valeur en fonction de vos besoins */
+    margin: 0 auto; /* Centre les articles horizontalement */
+    border: 2px solid red;
+    margin-top: 2em;
+}
+
+.article{
+    width: calc(33.33% - 10px); /* Calcule la largeur de chaque article en fonction du conteneur */
+    margin-bottom: 20px; /* Espace entre les lignes */
+    box-sizing: border-box; /* Inclut les marges et les bordures dans le calcul de la largeur */
+    border: 2px solid black;
+}
+
+img{
+     width: -webkit-fill-available;
+}

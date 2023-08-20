@@ -25,7 +25,6 @@ document.addEventListener('DOMContentLoaded', () => {
         }
       })
       .then(data => {
-        console.log(data)
         const token = data.accessToken;
         saveToken(token);
       // Rediriger vers la page d'accueil après l'inscription

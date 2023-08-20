@@ -14,8 +14,6 @@ const createArticleForm = document.getElementById('create-article-form');
 createArticleForm.addEventListener('submit', async (event) => {
   event.preventDefault();
 
-console.log(event.target[0].value);
-console.log(createArticleForm);
   const titre = event.target[0].value;
   const contenu = event.target[1].value;
 
