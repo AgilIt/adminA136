@@ -13,7 +13,7 @@ frontend/
 │   ├── login.js
 │   ├── signup.js
 │   ├── home.js
-│   ├── create-article.js
+│   ├── gestion-article.js
 │   └── main.js
 │
 └── images/

@@ -29,6 +29,7 @@ async function createArticle(formData) {
   const token = localStorage.getItem('token');
 
   const response = await fetch(apiBaseUrl +'articles', {
+    
     method: 'POST',
     headers: {
   
@@ -36,8 +37,9 @@ async function createArticle(formData) {
     },
     body: formData
   });
-
-  return response;
+  const data = await response.json();
+  console.log('data',data);
+  return data;
 }
 
 // Fonction pour créer un article

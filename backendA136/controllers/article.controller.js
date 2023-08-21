@@ -24,10 +24,11 @@ exports.createArticle = (req, res) => {
     if (err) {
       return res.status(500).send({ message: err.message });
     }
-
-    return res.status(201).send({ message: 'Article créé avec succès', article: savedArticle });
+    
+    return res;
   });
 };
+
 
 exports.deleteArticle = (req, res) => {
   const articleId = req.params.id;

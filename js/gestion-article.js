@@ -12,13 +12,13 @@ if (!token) {
 const createArticleForm = document.getElementById('create-article-form');
 createArticleForm.addEventListener('submit', async (event) => {
   event.preventDefault();
-
+console.log('HELLO => ');
   const formData = new FormData(createArticleForm);
   formData.append('iduser', 1); // Remplacez par la valeur appropriée
 
   try {
     const res = await createArticle(formData);
-
+  console.log('HELLO => ',res); 
     if (res.status === 201) {
       alert('Article créé avec succès !');
       window.location.href = 'home.html';
@@ -36,12 +36,11 @@ export async function deleteArticleService(articleId){
 
   try {
     const res = await deleteArticle(articleId);
-
-    if (res.status === 201) {
+    const data = await res.json();
+    if (data.message=== 'ok') {
       alert('Article supprimé avec succès !');
       window.location.href = 'home.html';
     } else {
-      const data = await res.json();
       alert(`Erreur lors de la suppression de l'article : ${data.message}`);
     }
   } catch (error) {

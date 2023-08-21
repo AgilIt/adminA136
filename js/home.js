@@ -1,6 +1,6 @@
 import { getToken, removeToken } from './auth.js';
 import { apiBaseUrl } from './api.js';
-import { deleteArticleService } from './create-article.js'
+import { deleteArticleService } from './gestion-article.js'
 
 // Vérifier si l'utilisateur est connecté
 const token = getToken();
