@@ -1,5 +1,5 @@
 import { getToken } from './auth.js';
-import { apiBaseUrl, createArticle } from './api.js';
+import { createArticle } from './api.js';
 
 // Vérifier si l'utilisateur est connecté
 const token = getToken();
@@ -10,22 +10,22 @@ if (!token) {
 
 // Gérer la création d'un nouvel article
 const createArticleForm = document.getElementById('create-article-form');
-
 createArticleForm.addEventListener('submit', async (event) => {
   event.preventDefault();
 
-  const titre = event.target[0].value;
-  const contenu = event.target[1].value;
+  const formData = new FormData(createArticleForm);
+  formData.append('iduser', 1); // Remplacez par la valeur appropriée
 
   try {
-    const res = await createArticle(1,titre, contenu);
-    if(res.ok){
+    const res = await createArticle(formData);
+
+    if (res.status === 201) {
       alert('Article créé avec succès !');
-    }else{
-      alert('Article NON créé avec....');
+      window.location.href = 'home.html';
+    } else {
+      const data = await res.json();
+      alert(`Erreur lors de la création de l'article : ${data.message}`);
     }
-    // Rediriger vers la page d'accueil après la création de l'article
-    window.location.href = 'home.html';
   } catch (error) {
     console.error('Erreur lors de la création de l\'article :', error);
   }
