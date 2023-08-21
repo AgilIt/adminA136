@@ -1,19 +1,5 @@
 export const apiBaseUrl = 'http://localhost:3000/api/'; // Utilisez le bon port ici
 
-// Fonction pour envoyer une requête avec un token d'authentification
-async function fetchWithToken(url, options) {
-  const token = localStorage.getItem('token');
-  if (token) {
-    options.headers = {
-      ...options.headers,
-      'x-access-token': token
-    };
-  }
-
-  const response = await fetch(apiBaseUrl + url, options);
-  return response;
-}
-
 // Fonction pour effectuer la connexion
 async function login(username, password) {
   const response = await fetch(apiBaseUrl + 'auth/login', {
@@ -54,7 +40,22 @@ async function createArticle(formData) {
   return response;
 }
 
-// Vous pouvez ajouter d'autres fonctions pour récupérer des articles, etc.
+// Fonction pour créer un article
+async function deleteArticle(articleId) {
+  const token = localStorage.getItem('token');
+
+  const response = await fetch(apiBaseUrl +'articles/'+articleId, {
+    method: 'DELETE',
+    headers: {
+  
+      'x-access-token': token
+    },
+  
+  });
+
+  return response;
+}
+
 
 // Export des fonctions pour les utiliser dans d'autres fichiers
-export { login, signup, createArticle };
+export { login, signup, createArticle,deleteArticle };

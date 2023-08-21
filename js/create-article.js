@@ -1,5 +1,5 @@
 import { getToken } from './auth.js';
-import { createArticle } from './api.js';
+import { createArticle, deleteArticle } from './api.js';
 
 // Vérifier si l'utilisateur est connecté
 const token = getToken();
@@ -30,3 +30,21 @@ createArticleForm.addEventListener('submit', async (event) => {
     console.error('Erreur lors de la création de l\'article :', error);
   }
 });
+
+
+export async function deleteArticleService(articleId){
+
+  try {
+    const res = await deleteArticle(articleId);
+
+    if (res.status === 201) {
+      alert('Article supprimé avec succès !');
+      window.location.href = 'home.html';
+    } else {
+      const data = await res.json();
+      alert(`Erreur lors de la suppression de l'article : ${data.message}`);
+    }
+  } catch (error) {
+    console.error('Erreur lors de la suppression de l\'article :', error);
+  }
+}

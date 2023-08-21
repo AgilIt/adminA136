@@ -16,5 +16,3 @@ exports.verifyToken = (req, res, next) => {
     next();
   });
 };
-
-// Vous pouvez ajouter d'autres fonctions de middleware liées à l'authentification, si nécessaire.

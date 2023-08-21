@@ -1,5 +1,6 @@
 import { getToken, removeToken } from './auth.js';
 import { apiBaseUrl } from './api.js';
+import { deleteArticleService } from './create-article.js'
 
 // Vérifier si l'utilisateur est connecté
 const token = getToken();
@@ -28,6 +29,7 @@ document.addEventListener('DOMContentLoaded', async () => {
         const articleElement = document.createElement('div');
         articleElement.classList.add('article');
         articleElement.innerHTML = `
+        <span id=${article.id} class="delete_article">X</span>
           <h2>${article.titre}</h2>
           <p>${article.contenu}</p>
         `;
@@ -42,6 +44,18 @@ document.addEventListener('DOMContentLoaded', async () => {
         
         articlesContainer.appendChild(articleElement);
       });
+
+      const deleteBtnList = document.querySelectorAll('.delete_article');
+        console.log(deleteBtnList);
+        deleteBtnList.forEach((deleteBtn) =>{
+        deleteBtn.addEventListener('click', async (event) => {
+        event.preventDefault();
+        console.log(event);
+        const articleId = event.target.id;
+        console.log(articleId);
+          deleteArticleService(articleId);
+        });
+        });
     })
     .catch(error => {
       console.error('Erreur lors de la récupération des articles :', error);
@@ -57,4 +71,4 @@ function arrayBufferToBase64(buffer) {
     binary += String.fromCharCode(bytes[i]);
   }
   return btoa(binary);
-}
+};

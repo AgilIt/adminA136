@@ -16,6 +16,10 @@ module.exports = app => {
   // Récupérer tous les articles
   app.get('/api/articles', articles.getAllArticles);
 
+  app.delete('/api/articles/:id', verifyToken, (req, res) => {
+    articles.deleteArticle(req, res);
+  });
+
   // Exemple de route protégée par le middleware d'authentification
   app.get('/api/articles/protected', verifyToken, (req, res) => {
     // Vous pouvez accéder à l'ID de l'utilisateur à partir de req.userId

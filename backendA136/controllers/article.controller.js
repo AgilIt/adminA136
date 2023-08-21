@@ -1,20 +1,10 @@
 const db = require('../models');
 const Article = db.article;
-const multer = require('multer');
-const upload = multer();
-
-// Créer un nouvel article
-// Configuration de multer pour gérer les fichiers
 
 
 exports.createArticle = (req, res) => {
   const { iduser, titre, contenu } = req.body; // Utilisation des données envoyées par le formulaire
   const image = req.file;
-
-  console.log(iduser);
-  console.log(titre);
-  console.log(contenu);
-  console.log(image);
 
   // Vérification des champs obligatoires
   if (!iduser || !titre || !contenu || !image) {
@@ -39,6 +29,20 @@ exports.createArticle = (req, res) => {
   });
 };
 
+exports.deleteArticle = (req, res) => {
+  const articleId = req.params.id;
+
+  Article.destroy({
+    where: { id: articleId }
+  })
+    .then(() => {
+      res.status(200).send({ message: 'ok' });
+    })
+    .catch(err => {
+      res.status(500).send({ message: err.message || 'Une erreur s\'est produite lors de la suppression de l\'article.' });
+    });
+};
+
 // Récupérer tous les articles
 exports.getAllArticles = (req, res) => {
   Article.findAll()
@@ -49,6 +53,3 @@ exports.getAllArticles = (req, res) => {
       res.status(500).send({ message: err.message || 'Une erreur s\'est produite lors de la récupération des articles.' });
     });
 };
-
-
-// Vous pouvez ajouter d'autres fonctions de contrôleur pour la mise à jour, la suppression et la récupération des articles.
