@@ -2,7 +2,7 @@ const db = require('../models');
 const Article = db.article;
 
 
-exports.createArticle = (req, res) => {
+exports.createArticle = async (req, res) => {
   const { iduser, titre, contenu } = req.body; // Utilisation des données envoyées par le formulaire
   const image = req.file;
 
@@ -11,22 +11,19 @@ exports.createArticle = (req, res) => {
     return res.status(400).send({ message: 'Tous les champs sont obligatoires.' });
   }
 
-  // Création de l'article
-  const article = new Article({
-    iduser: iduser,
-    titre: titre,
-    contenu: contenu,
-    image: image.buffer
-  });
+  try {
+    // Création de l'article en utilisant la méthode create du modèle Article
+    const createdArticle = await Article.create({
+      iduser: iduser,
+      titre: titre,
+      contenu: contenu,
+      image: image.buffer
+    });
 
-  // Enregistrement de l'article dans la base de données
-  article.save((err, savedArticle) => {
-    if (err) {
-      return res.status(500).send({ message: err.message });
-    }
-    
-    return res;
-  });
+    return res.status(201).send({ message: 'ok', statut: res.statut, article: createdArticle });
+  } catch (err) {
+    return res.status(500).send({ message: err.message });
+  }
 };
 
 

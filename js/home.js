@@ -46,13 +46,10 @@ document.addEventListener('DOMContentLoaded', async () => {
       });
 
       const deleteBtnList = document.querySelectorAll('.delete_article');
-        console.log(deleteBtnList);
         deleteBtnList.forEach((deleteBtn) =>{
         deleteBtn.addEventListener('click', async (event) => {
         event.preventDefault();
-        console.log(event);
         const articleId = event.target.id;
-        console.log(articleId);
           deleteArticleService(articleId);
         });
         });

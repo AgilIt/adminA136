@@ -38,7 +38,6 @@ async function createArticle(formData) {
     body: formData
   });
   const data = await response.json();
-  console.log('data',data);
   return data;
 }
 
